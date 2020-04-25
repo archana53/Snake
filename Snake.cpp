@@ -106,6 +106,7 @@ class Snake : public Pixel {
 	void PrintTimer(int );
 
 };
+
 void Snake::move(char dir ){
 		CurrDir = dir;
 		if(CurrDir == 72){
@@ -1002,7 +1003,7 @@ int main(){
 			mySnake.ShowSnake();
 			Sleep(110 - 20*speed);
 			mySnake.move(dir);		
-			
+			myFood.show(3);
 			//check if food is eaten
 			if(mySnake.Eat(myFood)){
 				myFood.hide();
@@ -1113,6 +1114,7 @@ int main(){
 			mySnake->ShowSnake();
 			Sleep(110 - 20*speed);
 			mySnake->move(dir);		
+			myFood.show(3);
 			
 			if(mySnake->Eat(myFood)){
 				myFood.hide();
