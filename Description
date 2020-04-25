@@ -1,0 +1,39 @@
+Problem Statement : Implement an old-fashioned snake game with saving and loading option.
+
+Implementation : 
+
+1) New game option to begin a fresh game
+2) Load Game to start a saved game 
+3) The Most Recent 15 games are stored and the remaining are discarded.
+4) Display of Top 15 highscores of all time
+5) Level Adjustment with respect to speed
+
+Challenges : 
+1) Depiction of Snake, Movement and Extension
+2) Saving file 
+3) Loading file with appropriate parameters set
+4) Displaying Highscores
+
+Aprroach :
+1) Snake, Movement and Extension
+ a) Using pixel representation with help of "conio.h" to navigate to a specific coordinate in the console
+ b) Storing the body of snake in a vector
+ c) Displaying snake after every loop iteration until GameOver / Esc / Save
+ d) Changing dir if a key is pressed (using khbit()) and alter the body of snake accordingly
+ e) Food Generation : Have a seperate child class of pixel for displaying and generating new food after consumption
+ f) Timer : Display timer of Snake using ctime class
+ g) Extending by overloading ++ operator on class Snak
+ 
+2) Saving Game
+ a) Use a seperate file as a directory for all the saved games
+ b) Add our game file name to the directory
+ c) Open our file and store contents of game in that
+ 
+3) Loading Game
+  a) Display the most recent 15 games by using the directory
+  b) Take input for which game file to open
+  c) Retrieve the contents of the saved game and return
+4) Displaying Highscores
+  a) Use a highscore.txt file to keep track of all the highscores added
+  b) Store them in a temporary Table and sort the table
+  c) Display the bottom 15
