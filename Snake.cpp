@@ -2,10 +2,13 @@
 #include<windows.h>
 #include<conio.h>
 #include <bits/stdc++.h>
+
+
+/*  SNAKE GAME IMPLEMENTATION */
+
 using namespace std;
 
-int ii,jj,kk,iii; //iterators
-bool GameOver = false;
+int ii,jj,kk,iii;
 
 void gotoxy(int x, int y) //goes to x,y location in the console
 {
@@ -253,9 +256,7 @@ void Snake::operator ++(){
 	
  }
 
-class Food : public Pixel{
-	
-	
+class Food : public Pixel{	
 	
 	public :
 		
@@ -593,7 +594,7 @@ string LevelList(){
 	
 	string response;	
 	ShowBorder();	
-	gotoxy(40,2);
+	gotoxy(45,2);
 	std::cout << "LEVEL LIST";
 	
 	for( ii = 1; ii < 98 ;ii++){ //top boundary
@@ -800,7 +801,7 @@ string TakeUsername(){
 				}
 			}	
 		}
-			if(username1.length() && (n == '\r' || n== ' ')){
+			if(username1.length() > 0  && username1.length() < 26 && (n == '\r' || n== ' ')){
 				username1.push_back('\0');
 				system("cls");
 				return username1; //checking if valid username and throwing if it is
@@ -1078,8 +1079,7 @@ int main(){
 		}
 	}
 	if(choice == '2'){
-		
-					
+							
 		system("cls");
 		
 		//loading the snake
@@ -1194,9 +1194,12 @@ int main(){
 		goto WelcomeScreen;
 	}
 	if(choice == '5'){
+		int tempspeed = speed;
 		system("cls");
 		string x = LevelList();
 		speed = atoi(x.c_str());
+		if(speed >4 || speed < 0)
+		speed = tempspeed;
 		system("cls");
 		goto WelcomeScreen;
 	}
