@@ -33,6 +33,7 @@ Aprroach :
   a) Display the most recent 15 games by using the directory
   b) Take input for which game file to open
   c) Retrieve the contents of the saved game and return
+  
 4) Displaying Highscores
   a) Use a highscore.txt file to keep track of all the highscores added
   b) Store them in a temporary Table and sort the table
