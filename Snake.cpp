@@ -827,10 +827,43 @@ Snake LoadGame(){
 	vector <string> x = PrintSavedGames();
 	//choosing game to laod
 	gotoxy(30,24) ;
+	int sel;
 	cout << "Choose Game Number : ";
 	char num[5];
 	gets(num);
-	int sel = stoi(num);
+	if(num[0] == '\0'){
+		Snake* newSnake = new Snake(0);
+		return *newSnake;
+	}
+	try {
+    	sel = stoi(num);
+    }
+
+    catch (const std::invalid_argument& ia) {
+        //std::cerr << "Invalid argument: " << ia.what() << std::endl;
+    	goto Wrong_Choice;
+    }
+
+    catch (const std::out_of_range& oor) {
+        //std::cerr << "Out of Range error: " << oor.what() << std::endl;
+        goto Wrong_Choice;
+    }
+
+    catch (const std::exception& e)
+    {
+        //std::cerr << "Undefined error: " << e.what() << std::endl;
+        goto Wrong_Choice;
+    }
+
+	if(sel > x.size()){
+		Wrong_Choice:
+		system("cls");
+		gotoxy(45,12);
+		cout << "Invalid choice";
+		Sleep(2000);
+		Snake* newSnake = new Snake(0);
+		return *newSnake;
+	}
 	string filename = x[sel-1];
 	string token,line,token1;
 	filename.append(".txt");
@@ -1086,6 +1119,12 @@ int main(){
 		//loading the snake
 		Snake* mySnake = new Snake(0);
 		*mySnake = LoadGame();
+		if(mySnake->GetLength() == 0){
+				system("cls");
+				goto WelcomeScreen;
+				
+		}
+	
 		char dir = mySnake->CurrDir;
 		//checking if ready
 				
